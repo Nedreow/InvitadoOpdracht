@@ -37,22 +37,9 @@ class PersonalData
         $this->country = $formPost["country"];
     }
 
-    function savePersonalData(): void
+    function save(): void
     {
-        try {
-            $databaseConfig = new DatabaseConfig;
-            $servername = $databaseConfig->getServerName();
-            $username = $databaseConfig->getUserName();
-            $password = $databaseConfig->getServerPass();
-
-            $conn = new PDO("mysql:host=$servername;dbname=myDB", $username, $password);
-            // set the PDO error mode to exception
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        }
-        catch(PDOException $e)
-        {
-            echo "Connection failed: " . $e->getMessage();
-        }
+        $conn = DatabaseConfig::getConnection();
 
         $sql = "INSERT INTO personal_data (salutation, custom_salutation, first_name, last_name, birthday, email, country) VALUES (?,?,?,?,?,?,?)";
         $stmt= $conn->prepare($sql);
