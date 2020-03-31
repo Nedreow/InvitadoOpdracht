@@ -6,7 +6,7 @@
 <body>
     <div>
         <p>Om U beter te kunnen helpen hebben wij enkele persoonlijke gegevens nodig. Deze zullen exclusief gebruikt worden voor onze services en zullen niet doorgegven worden aan derden</p>
-        <form>
+        <form method="post" class="info-form">
             <div class="form-row">
                 <div>
                     <label for="salutation-select">Aanhef:</label>
